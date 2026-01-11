@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ma.emsi.entities">
+    <class name="Paiement" table="Paiement">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="datePaiement" column="date_paiement" type="timestamp"/>
+        <property name="montant" column="montant" not-null="true"/>
+        <property name="moyenPaiement" column="moyen_paiement"/>
+        <property name="statut" column="statut"/>
+
+        <!-- One-to-One / Many-to-One unique -->
+        <many-to-one name="reservation" class="Reservation" column="reservation_id" unique="true" not-null="true" cascade="all"/>
+    </class>
+</hibernate-mapping>

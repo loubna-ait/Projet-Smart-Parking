@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database Connection Settings - Pointing to Docker Service Name -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://smart_parking_db:3306/smart_parking?createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <property name="connection.pool_size">10</property>
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Mappings -->
+        <mapping resource="ma/emsi/entities/Utilisateur.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/Parking.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/PlaceStationnement.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/Reservation.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/Paiement.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/CapteurIoT.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/TarifDynamique.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

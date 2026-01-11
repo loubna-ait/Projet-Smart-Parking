@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="ma.emsi.ui.LoginController" stylesheets="@style.css" 
+      alignment="CENTER" spacing="20" styleClass="login-container">
+    
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="10" styleClass="login-card">
+        <padding>
+            <Insets top="30" right="30" bottom="30" left="30"/>
+        </padding>
+
+        <Label text="Smart Parking" styleClass="login-title"/>
+        <Label text="Connexion au système" styleClass="login-subtitle"/>
+
+        <VBox spacing="5" alignment="CENTER_LEFT">
+            <Label text="Email"/>
+            <TextField fx:id="emailField" promptText="admin@parking.ma" prefWidth="300"/>
+        </VBox>
+
+        <VBox spacing="5" alignment="CENTER_LEFT">
+            <Label text="Mot de passe"/>
+            <PasswordField fx:id="passwordField" promptText="••••••••"/>
+        </VBox>
+
+        <VBox spacing="5" alignment="CENTER_LEFT">
+            <Label text="Se connecter en tant que :"/>
+            <HBox spacing="20">
+                <RadioButton fx:id="adminRadio" text="Administrateur" selected="true">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="roleGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="conducteurRadio" text="Conducteur" toggleGroup="$roleGroup"/>
+            </HBox>
+        </VBox>
+
+        <Button text="Se Connecter" onAction="#handleLogin" styleClass="login-button" prefWidth="300"/>
+        
+        <Label fx:id="errorLabel" styleClass="error-text" wrapText="true"/>
+    </VBox>
+
+</VBox>

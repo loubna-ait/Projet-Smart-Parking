@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ma.emsi.entities">
+    <class name="Parking" table="Parking">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="nom" column="nom" not-null="true"/>
+        <property name="adresse" column="adresse" not-null="true"/>
+        <property name="latitude" column="latitude"/>
+        <property name="longitude" column="longitude"/>
+        <property name="capaciteTotale" column="capacite_totale" not-null="true"/>
+
+        <!-- One-to-Many mapping: A Parking has many Places -->
+        <set name="places" inverse="true" cascade="all">
+            <key column="parking_id"/>
+            <one-to-many class="PlaceStationnement"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ma.emsi.entities">
+    <class name="CapteurIoT" table="CapteurIoT">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="ipAddress" column="ip_address"/>
+        <property name="etatBatterie" column="etat_batterie"/>
+        <property name="statutOperationnel" column="statut_operationnel"/>
+
+        <many-to-one name="place" class="PlaceStationnement" column="place_id" unique="true" cascade="all"/>
+    </class>
+</hibernate-mapping>

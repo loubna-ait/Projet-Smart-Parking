@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="ma.emsi.ui.MainController" stylesheets="@style.css" styleClass="main-container">
+    
+    <top>
+        <HBox styleClass="header" alignment="CENTER_LEFT" spacing="20">
+            <Label text="Smart Parking Dashboard" styleClass="header-text" HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Déconnexion" onAction="#handleLogout" style="-fx-background-color: #e74c3c;"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <!-- Parking Tab -->
+                <Tab fx:id="parkingTab" text="Parkings">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <TextField fx:id="searchField" promptText="Rechercher par nom..." prefWidth="200"/>
+                            <Button text="Rechercher" onAction="#handleSearch"/>
+                        </HBox>
+                        <TableView fx:id="parkingTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="parkingIdCol" text="ID" prefWidth="50" />
+                                <TableColumn fx:id="parkingNomCol" text="Nom" prefWidth="150" />
+                                <TableColumn fx:id="parkingAdresseCol" text="Adresse" prefWidth="250" />
+                                <TableColumn fx:id="parkingCapaciteCol" text="Capacité" prefWidth="100" />
+                                <TableColumn fx:id="parkingLibreCol" text="Places Libres" prefWidth="100" />
+                            </columns>
+                        </TableView>
+                        <HBox spacing="10">
+                            <Button fx:id="addParkingBtn" text="Ajouter Parking" onAction="#handleAddParking"/>
+                            <Button fx:id="updateParkingBtn" text="Modifier" onAction="#handleUpdateParking" style="-fx-background-color: #3498db;"/>
+                            <Button fx:id="deleteParkingBtn" text="Supprimer" onAction="#handleDeleteParking" style="-fx-background-color: #e67e22;"/>
+                            <Button text="Actualiser" onAction="#handleRefreshParkings"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                
+                <!-- Places Tab -->
+                <Tab fx:id="placesTab" text="Places">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <TableView fx:id="placeTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="placeIdCol" text="ID" prefWidth="50" />
+                                <TableColumn fx:id="placeNumeroCol" text="Numéro" prefWidth="100" />
+                                <TableColumn fx:id="placeTypeCol" text="Type" prefWidth="100" />
+                                <TableColumn fx:id="placeStatusCol" text="Statut" prefWidth="100" />
+                                <TableColumn fx:id="placeParkingCol" text="Parking" prefWidth="150" />
+                            </columns>
+                        </TableView>
+                        <HBox spacing="10">
+                            <Button fx:id="reserveBtn" text="Réserver" onAction="#handleReserve" style="-fx-background-color: #27ae60;"/>
+                            <Button fx:id="cancelBtn" text="Annuler" onAction="#handleCancel" style="-fx-background-color: #e74c3c;"/>
+                            <Button text="Actualiser" onAction="#handleRefreshPlaces"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                
+                <!-- Capteurs Tab -->
+                <Tab fx:id="capteursTab" text="Capteurs">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <TableView fx:id="capteurTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="capteurIdCol" text="ID" prefWidth="50" />
+                                <TableColumn fx:id="capteurReferenceCol" text="Référence" prefWidth="150" />
+                                <TableColumn fx:id="capteurTypeCol" text="Type" prefWidth="100" />
+                                <TableColumn fx:id="capteurEtatCol" text="État" prefWidth="100" />
+                            </columns>
+                        </TableView>
+                        <HBox spacing="10">
+                            <Button text="Actualiser" onAction="#handleRefreshCapteurs"/>
+                        </HBox>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    
+    <bottom>
+        <HBox styleClass="status-bar">
+            <Label fx:id="statusLabel" text="Prêt"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

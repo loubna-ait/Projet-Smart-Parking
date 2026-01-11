@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ma.emsi.entities">
+    <class name="Utilisateur" table="Utilisateur">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="nom" column="nom" not-null="true"/>
+        <property name="prenom" column="prenom" not-null="true"/>
+        <property name="email" column="email" unique="true" not-null="true"/>
+        <property name="motDePasse" column="mot_de_passe" not-null="true"/>
+        <property name="role" column="role" not-null="true"/>
+
+        <joined-subclass name="Conducteur" table="Conducteur">
+            <key column="id"/>
+            <property name="numPermis" column="num_permis"/>
+        </joined-subclass>
+
+        <joined-subclass name="Administrateur" table="Administrateur">
+            <key column="id"/>
+            <property name="departement" column="departement"/>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

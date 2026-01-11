@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ma.emsi.entities">
+    <class name="TarifDynamique" table="TarifDynamique">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="typeJour" column="type_jour"/>
+        <property name="heureDebut" column="heure_debut"/>
+        <property name="heureFin" column="heure_fin"/>
+        <property name="tarifHoraire" column="tarif_horaire" type="big_decimal" not-null="true"/>
+    </class>
+</hibernate-mapping>

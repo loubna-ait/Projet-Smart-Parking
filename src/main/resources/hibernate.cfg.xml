@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database Connection Settings -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/smart_parking?createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</property>
+
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <!-- JDBC Connection Pool (using built-in for dev, consider C3P0/Hikari for prod) -->
+        <property name="connection.pool_size">10</property>
+
+        <!-- SQL Dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- Auto-generation of schema (update/create/validate/none) -->
+        <!-- Using 'update' for dev; use 'validate' if schema is managed by init.sql strictly -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Mappings -->
+        <mapping resource="ma/emsi/entities/Utilisateur.hbm.xml"/>
+        <!-- Subclasses Conducteur/Administrateur are mapped inside Utilisateur.hbm.xml -->
+        <mapping resource="ma/emsi/entities/Parking.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/PlaceStationnement.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/Reservation.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/Paiement.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/CapteurIoT.hbm.xml"/>
+        <mapping resource="ma/emsi/entities/TarifDynamique.hbm.xml"/>
+        
+    </session-factory>
+</hibernate-configuration>
